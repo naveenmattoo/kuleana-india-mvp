@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshops - Nurture Your Child | Kuleana India</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-warm: #FFFBF5;
+            --text-dark: #4F4A45;
+            --brand-terracotta: #D16B4D;
+            --brand-sage: #8E9B8A;
+            --brand-sun: #F2C84B;
+            --brand-light-teal: #E0F2F1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .k-btn {
+            @apply px-8 py-3 rounded-full text-base font-semibold tracking-wider transition-all duration-300 ease-in-out shadow-sm;
+        }
+        .k-btn-primary {
+            @apply bg-brand-terracotta text-white hover:bg-opacity-90 hover:shadow-lg transform hover:-translate-y-0.5;
+        }
+        .section-title {
+            @apply font-serif text-4xl md:text-5xl font-bold text-gray-800 tracking-tight;
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1), transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="font-serif text-3xl font-bold text-brand-sage">Kuleana<span class="text-brand-terracotta">.</span></a>
+                <nav class="hidden md:flex items-center space-x-8 text-gray-700 font-medium">
+                    <a href="index.html#about" class="hover:text-brand-terracotta">Our Story</a>
+                    <a href="index.html#circle" class="hover:text-brand-terracotta">The Circle</a>
+                    <a href="index.html#shop" class="hover:text-brand-terracotta">Circle & Square</a>
+                </nav>
+                <a href="index.html" class="text-sm font-semibold text-brand-sage hover:text-brand-terracotta">&larr; Back to Home</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="bg-brand-light-teal py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="section-title">Invest in Their Inner World.</h1>
+                <p class="mt-4 text-lg md:text-xl max-w-3xl mx-auto text-gray-600">
+                    Our parent-child workshops are designed to cultivate empathy, creativity, and resilience. Every enrollment sponsors a place for an underprivileged child in our community programs.
+                </p>
+            </div>
+        </section>
+
+        <!-- Featured Flagship Workshop Section -->
+        <section id="flagship-workshop" class="py-24 md:py-32 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                    <!-- Left Column: Image and Key Details -->
+                    <div class="lg:w-5/12 w-full fade-in-up">
+                        <div class="bg-gray-100 rounded-2xl shadow-lg p-2">
+                            <img src="https://placehold.co/600x700/8E9B8A/FFFBF5?text=The+Quiet+Connection" alt="A parent and child engaged in a creative activity" class="rounded-xl w-full h-auto object-cover">
+                        </div>
+                        <div class="mt-8 bg-white border border-gray-200 rounded-2xl p-6">
+                             <h3 class="font-serif text-xl font-bold text-gray-800">Workshop Details</h3>
+                             <ul class="mt-4 space-y-3 text-gray-700">
+                                 <li class="flex items-start"><span class="text-brand-sun mr-3 mt-1">&#10003;</span> <strong>For Ages:</strong> 6-9 years</li>
+                                 <li class="flex items-start"><span class="text-brand-sun mr-3 mt-1">&#10003;</span> <strong>Format:</strong> 4 Weekend Sessions (2 hours each Saturday)</li>
+                                 <li class="flex items-start"><span class="text-brand-sun mr-3 mt-1">&#10003;</span> <strong>Next Cohort:</strong> November 8th, 2025</li>
+                                 <li class="flex items-start"><span class="text-brand-sun mr-3 mt-1">&#10003;</span> <strong>Lead Facilitator:</strong> Dr. Anjali Sharma (Child Psychologist)</li>
+                             </ul>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Workshop Description and CTA -->
+                    <div class="lg:w-7/12 w-full fade-in-up" style="transition-delay: 200ms;">
+                        <p class="font-semibold text-brand-terracotta tracking-wide">FLAGSHIP WORKSHOP</p>
+                        <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-800 mt-2">The Art of Empathy: A 4-Week Parent & Child Journey</h2>
+                        <p class="mt-6 text-lg text-gray-600">This isn't just another activity class. It's a shared experience designed to strengthen your bond while equipping your child with the most important superpower of all: empathy. Through guided storytelling, collaborative art projects, and mindful exercises, you will both embark on a journey of emotional discovery and connection.</p>
+                        
+                        <h3 class="font-serif text-2xl font-bold text-gray-800 mt-10">What You'll Both Discover:</h3>
+                        <ul class="mt-6 space-y-4 text-gray-700 text-lg">
+                            <li class="flex items-center"><span class="bg-brand-light-teal text-brand-sage rounded-full w-6 h-6 text-center mr-4">&#10003;</span> The language of feelings: Naming and navigating emotions.</li>
+                            <li class="flex items-center"><span class="bg-brand-light-teal text-brand-sage rounded-full w-6 h-6 text-center mr-4">&#10003;</span> Creative expression through storytelling and collaborative art.</li>
+                            <li class="flex items-center"><span class="bg-brand-light-teal text-brand-sage rounded-full w-6 h-6 text-center mr-4">&#10003;</span> Mindful listening and communication exercises.</li>
+                             <li class="flex items-center"><span class="bg-brand-light-teal text-brand-sage rounded-full w-6 h-6 text-center mr-4">&#10003;</span> Building a 'Kindness Project' to take out into the world.</li>
+                        </ul>
+
+                        <!-- The Kuleana Impact Box -->
+                        <div class="mt-10 bg-brand-light-teal border-l-4 border-brand-sage rounded-r-lg p-6">
+                             <h4 class="font-serif text-xl font-bold text-brand-sage">The Kuleana Impact</h4>
+                             <p class="mt-2 text-gray-700">Your enrollment of **₹8,500** directly funds a full month of creative learning and mental wellness support for a child at our Noida community center. You are not just investing in your child; you are lifting up another.</p>
+                        </div>
+                        
+                        <div class="mt-12">
+                             <a href="#" class="k-btn k-btn-primary w-full sm:w-auto">Enroll in the Empathy Journey</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="py-24 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title">From Our Circle...</h2>
+                <div class="mt-16 grid md:grid-cols-3 gap-10">
+                    <div class="bg-white p-8 rounded-2xl shadow-lg fade-in-up">
+                        <img src="https://placehold.co/100x100/F2C84B/4F4A45?text=A" alt="Parent Testimonial" class="w-24 h-24 rounded-full mx-auto -mt-20 border-4 border-white">
+                        <p class="mt-6 text-gray-600 italic">"The empathy workshop was a game-changer. I learned as much as my daughter did. It's the best investment we've made in her education."</p>
+                        <p class="mt-4 font-bold text-gray-800">- Anika S.</p>
+                        <p class="text-sm text-gray-500">Parent to a 7-year-old</p>
+                    </div>
+                     <div class="bg-white p-8 rounded-2xl shadow-lg fade-in-up" style="transition-delay: 200ms;">
+                        <img src="https://placehold.co/100x100/D16B4D/FFFBF5?text=R" alt="Parent Testimonial" class="w-24 h-24 rounded-full mx-auto -mt-20 border-4 border-white">
+                        <p class="mt-6 text-gray-600 italic">"I was hesitant about a 'virtual' workshop, but the sessions were so engaging. My son talks about the 'Kindness Project' every day."</p>
+                        <p class="mt-4 font-bold text-gray-800">- Rohan M.</p>
+                        <p class="text-sm text-gray-500">Parent to an 8-year-old</p>
+                    </div>
+                     <div class="bg-white p-8 rounded-2xl shadow-lg fade-in-up" style="transition-delay: 400ms;">
+                        <img src="https://placehold.co/100x100/8E9B8A/FFFBF5?text=P" alt="Parent Testimonial" class="w-24 h-24 rounded-full mx-auto -mt-20 border-4 border-white">
+                        <p class="mt-6 text-gray-600 italic">"Knowing our fee directly helped another child made the experience so much more meaningful. This is what all education should be."</p>
+                        <p class="mt-4 font-bold text-gray-800">- Priya K.</p>
+                        <p class="text-sm text-gray-500">Parent to a 6-year-old</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Footer -->
+    <footer class="bg-brand-sage text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+             <h3 class="font-serif text-4xl font-bold">Kuleana<span class="text-brand-sun">.</span></h3>
+             <p class="mt-4 text-gray-200">Where responsibility finds its future.</p>
+             <div class="mt-8">
+                 <p class="font-semibold">A-191, Sector 43, Noida, UP, India</p>
+                 <p class="mt-2 text-brand-sun">contact@kuleanaindia.org</p>
+             </div>
+             <div class="mt-8 pt-8 border-t border-white/20 text-sm text-gray-300">
+                <p>&copy; 2025 Kuleana India. A registered non-profit organization.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
