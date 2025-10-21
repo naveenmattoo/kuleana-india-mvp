@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuleana India - Where Responsibility Finds Its Future</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-warm: #FFFBF5;
+            --text-dark: #4F4A45;
+            --brand-terracotta: #D16B4D;
+            --brand-sage: #8E9B8A;
+            --brand-sun: #F2C84B;
+            --brand-light-teal: #E0F2F1;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-warm);
+            color: var(--text-dark);
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-bg {
+            background-color: #f1f1f1;
+            background-image: 
+                linear-gradient(rgba(142, 155, 138, 0.8), rgba(142, 155, 138, 0.8)),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            background-size: cover, auto;
+        }
+        .k-btn {
+            @apply px-8 py-3 rounded-full text-base font-semibold tracking-wider transition-all duration-300 ease-in-out shadow-sm;
+        }
+        .k-btn-primary {
+            @apply bg-brand-terracotta text-white hover:bg-opacity-90 hover:shadow-lg transform hover:-translate-y-0.5;
+        }
+        .k-btn-secondary {
+            @apply bg-transparent text-white border-2 border-white hover:bg-white hover:text-brand-terracotta;
+        }
+        .section-title {
+            @apply font-serif text-4xl md:text-5xl font-bold text-gray-800 tracking-tight;
+        }
+        .section-subtitle {
+            @apply mt-4 text-lg text-gray-600 max-w-3xl mx-auto;
+        }
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.165, 0.84, 0.44, 1), transform 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .curved-divider {
+            position: relative;
+            background: var(--bg-warm);
+            color: var(--text-dark);
+            height: 150px;
+            overflow: hidden;
+        }
+        .curved-divider svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            transform-origin: top left;
+        }
+        .illustration-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px -15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .illustration-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -15px rgba(0,0,0,0.15);
+        }
+
+        /* Gemini Modal Styles */
+        #gemini-modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+        #gemini-modal .modal-content {
+            transition: transform 0.3s ease-in-out;
+        }
+        .loader {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid var(--brand-sage);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="header">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <a href="#" class="font-serif text-3xl font-bold text-brand-sage">Kuleana<span class="text-brand-terracotta">.</span></a>
+                <nav class="hidden md:flex items-center space-x-8 text-gray-700 font-medium">
+                    <a href="#about" class="hover:text-brand-terracotta">Our Story</a>
+                    <a href="#circle" class="hover:text-brand-terracotta">The Circle</a>
+                    <a href="#shop" class="hover:text-brand-terracotta">Circle & Square</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                     <a href="#" class="k-btn k-btn-primary hidden sm:inline-block">Donate</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-bg min-h-screen flex items-center justify-center">
+            <div class="text-center text-white px-6">
+                 <div class="bg-white/20 backdrop-blur-sm rounded-full inline-block p-4 mb-8">
+                     <!-- Illustration: A stylized, growing plant -->
+                     <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-white" viewBox="0 0 20 20" fill="currentColor">
+                       <path d="M11 17a1 1 0 001.447.894l4-2A1 1 0 0017 15V5.236a1 1 0 00-1.447-.894l-4 2a1 1 0 00-.553.894V17zM15 7.118l1.553-.776a1 1 0 011.447.894V15a1 1 0 01-.553.894l-1.553.776V7.118zM3 17a1 1 0 01-1.447-.894l-2-4A1 1 0 010 11V3.236a1 1 0 011.447-.894l2 4A1 1 0 013 7v10z"/>
+                     </svg>
+                 </div>
+                <h1 class="font-serif text-5xl md:text-7xl lg:text-8xl font-bold leading-tight tracking-tight drop-shadow-xl">
+                    Where responsibility finds its future.
+                </h1>
+                <p class="mt-8 text-lg md:text-xl max-w-3xl mx-auto text-gray-200 drop-shadow-lg">
+                    A self-sustaining movement to build resilient mindsets in the children who will shape tomorrow.
+                </p>
+                <div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#about" class="k-btn k-btn-secondary w-full sm:w-auto">Discover Our Story</a>
+                    <a href="#circle" class="k-btn k-btn-primary w-full sm:w-auto">Join The Circle</a>
+                </div>
+            </div>
+        </section>
+        
+        <div class="curved-divider">
+            <svg viewBox="0 0 1440 120"><path d="M1440,21.2101911 C1200.55952,101.47151 961.119048,141.597656 721.678571,141.597656 C482.238095,141.597656 242.797619,101.47151 3.35570881,21.2101911 L3.35570881,0 L1440,0 L1440,21.2101911 Z" style="fill: var(--brand-sage);"></path></svg>
+        </div>
+
+
+        <!-- Our Story Teaser Section -->
+        <section id="about" class="py-24 md:py-32 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+                    <div class="lg:w-1/2 text-center lg:text-left fade-in-up">
+                        <p class="text-brand-terracotta font-semibold tracking-wide">A Founder's Promise</p>
+                        <h2 class="section-title mt-2">It started with a single, powerful question.</h2>
+                        <blockquote class="mt-6 text-xl md:text-2xl font-light text-gray-700 italic border-l-4 border-brand-sun pl-6">
+                            "How do I raise my son in a world of empathy? It wasn't enough to teach him; I had to build it. Kuleana is my responsibility, and my promise, to build that world—one resilient young mind at a time."
+                        </blockquote>
+                        <p class="mt-6 font-semibold text-gray-800">- Poonam Bhasin, CEO & MD</p>
+                    </div>
+                     <div class="lg:w-1/2 fade-in-up">
+                        <div class="relative">
+                            <!-- SVG Illustration: A stylized sun over a horizon, representing the future -->
+                            <div class="bg-brand-light-teal p-8 rounded-2xl shadow-lg">
+                                 <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+                                    <path d="M0 120 L200 120 L200 80 C 150 100, 50 100, 0 80 Z" fill="#8E9B8A"/>
+                                    <circle cx="100" cy="80" r="30" fill="#F2C84B"/>
+                                </svg>
+                                <p class="text-center mt-4 text-brand-sage font-medium">Our Shared Horizon</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Our Unique Model Section -->
+        <section class="py-24 md:py-32 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="section-title fade-in-up">A New Model for a Brighter Future</h2>
+                <p class="section-subtitle fade-in-up">We created a self-sustaining ecosystem of empowerment. Here's how it works.</p>
+                <div class="mt-20 grid md:grid-cols-3 gap-10">
+                    <div class="illustration-card fade-in-up">
+                        <!-- SVG Illustration for Nurture -->
+                        <svg class="h-20 w-20 mx-auto text-brand-sage" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                        <h3 class="mt-6 text-2xl font-bold text-gray-800">1. Nurture Potential</h3>
+                        <p class="mt-4 text-gray-600">Our core NGO work provides children with libraries, mental health support, and creative classes to thrive.</p>
+                    </div>
+                    <div class="illustration-card fade-in-up" style="transition-delay: 200ms;">
+                         <!-- SVG Illustration for Empower -->
+                        <svg class="h-20 w-20 mx-auto text-brand-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+                        <h3 class="mt-6 text-2xl font-bold text-gray-800">2. Empower Community</h3>
+                        <p class="mt-4 text-gray-600">The Kuleana Circle offers premium workshops and volunteer opportunities, creating a network of support.</p>
+                    </div>
+                    <div class="illustration-card fade-in-up" style="transition-delay: 400ms;">
+                        <!-- SVG Illustration for Fuel -->
+                       <svg class="h-20 w-20 mx-auto text-brand-terracotta" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path></svg>
+                        <h3 class="mt-6 text-2xl font-bold text-gray-800">3. Fuel the Mission</h3>
+                        <p class="mt-4 text-gray-600">Proceeds from our workshops and marketplace directly fund our NGO activities for the long term.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Kuleana Circle Section -->
+        <section id="circle" class="py-24 md:py-32 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center">
+                    <h2 class="section-title fade-in-up">Join The Kuleana Circle</h2>
+                    <p class="section-subtitle fade-in-up">Find your place in our community. A commitment to shared responsibility.</p>
+                </div>
+                <div class="mt-20 grid lg:grid-cols-3 gap-10">
+                    <a href="#" class="group block fade-in-up">
+                        <div class="bg-gray-50 rounded-2xl overflow-hidden">
+                             <img src="https://placehold.co/600x400/e0f2f1/8E9B8A?text=Nurture" alt="Illustration for nurturing a child" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 group-hover:text-brand-terracotta transition-colors">Nurture Your Child</h3>
+                            <p class="mt-3 text-gray-600">Enroll in workshops and give your child the gift of empathy while supporting another's future.</p>
+                        </div>
+                    </a>
+                     <div class="group block fade-in-up" style="transition-delay: 200ms;">
+                        <div class="bg-gray-50 rounded-2xl overflow-hidden">
+                             <img src="https://placehold.co/600x400/fff3e0/F2C84B?text=Mentor" alt="Illustration for mentoring" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 group-hover:text-brand-terracotta transition-colors">Become a Mentor</h3>
+                            <p class="mt-3 text-gray-600">Share your skills and passion. We'll help you plan the perfect session with our AI co-pilot.</p>
+                            <button id="open-gemini-modal" class="mt-4 text-brand-terracotta font-semibold">✨ Try the Co-Pilot &rarr;</button>
+                        </div>
+                    </div>
+                    <a href="#" class="group block fade-in-up" style="transition-delay: 400ms;">
+                        <div class="bg-gray-50 rounded-2xl overflow-hidden">
+                             <img src="https://placehold.co/600x400/fce4ec/D16B4D?text=Collaborate" alt="Illustration for collaboration" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold text-gray-800 group-hover:text-brand-terracotta transition-colors">Collaborate for Change</h3>
+                            <p class="mt-3 text-gray-600">We partner with corporations and schools to amplify our impact and create scalable solutions.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Circle & Square Section -->
+        <section id="shop" class="py-24 md:py-32" style="background-color: #f3eade;">
+             <div class="container mx-auto px-6 text-center">
+                <p class="font-serif text-3xl text-brand-terracotta fade-in-up">Circle & Square</p>
+                <h2 class="section-title mt-2 fade-in-up">Shop with Purpose. Gift with Meaning.</h2>
+                <p class="section-subtitle fade-in-up">Our curated collection of ethically-sourced toys, books, and art supplies. Every item you purchase directly supports a child's journey of discovery.</p>
+                <a href="#" class="mt-8 k-btn k-btn-primary inline-block fade-in-up">Explore The Marketplace</a>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer id="contact" class="bg-brand-sage text-white py-20">
+        <div class="container mx-auto px-6 text-center">
+             <h3 class="font-serif text-4xl font-bold">Kuleana<span class="text-brand-sun">.</span></h3>
+             <p class="mt-4 text-gray-200">Where responsibility finds its future.</p>
+             <div class="mt-8">
+                 <p class="font-semibold">A-191, Sector 43, Noida, UP, India</p>
+                 <p class="mt-2 text-brand-sun">contact@kuleanaindia.org</p>
+             </div>
+             <div class="mt-8 pt-8 border-t border-white/20 text-sm text-gray-300">
+                <p>&copy; 2025 Kuleana India. A registered non-profit organization.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Gemini API Modal -->
+    <div id="gemini-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 backdrop-blur-sm p-4 opacity-0 pointer-events-none">
+        <div class="modal-content bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col transform scale-95">
+            <div class="flex justify-between items-center p-6 border-b border-gray-200">
+                <h3 class="font-serif text-2xl text-brand-sage">✨ Mentor Session Co-Pilot</h3>
+                <button id="close-gemini-modal" class="text-gray-400 hover:text-gray-700">&times;</button>
+            </div>
+            <div class="p-6 overflow-y-auto">
+                <div id="gemini-form">
+                    <p class="text-gray-600 mb-6">Let's craft the perfect session. Tell me a little about what you're planning.</p>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="age-group" class="font-medium text-gray-700">Child's Age Group</label>
+                            <select id="age-group" class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-sun focus:border-brand-sun">
+                                <option>6-8 years</option>
+                                <option>9-12 years</option>
+                                <option>13-16 years</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="session-goal" class="font-medium text-gray-700">Main Goal / Theme</label>
+                            <input type="text" id="session-goal" placeholder="e.g., Building confidence, Exploring art, Teamwork skills" class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-sun focus:border-brand-sun">
+                        </div>
+                         <div>
+                            <label for="session-duration" class="font-medium text-gray-700">Session Duration</label>
+                            <select id="session-duration" class="w-full mt-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-sun focus:border-brand-sun">
+                                <option>30 minutes</option>
+                                <option>60 minutes</option>
+                                <option>90 minutes</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="gemini-loading" class="hidden flex-col items-center justify-center py-12">
+                    <div class="loader"></div>
+                    <p class="mt-4 text-brand-sage font-medium">Brewing some creative ideas...</p>
+                </div>
+                <div id="gemini-result" class="hidden prose max-w-none text-gray-700"></div>
+            </div>
+            <div class="p-6 border-t border-gray-200 bg-gray-50 rounded-b-2xl flex justify-end items-center gap-4">
+                 <button id="gemini-reset" class="text-gray-600 font-semibold hover:text-brand-terracotta hidden">Start Over</button>
+                 <button id="gemini-generate" class="k-btn k-btn-primary">Generate Plan</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-white/80', 'backdrop-blur-md', 'shadow-sm');
+                } else {
+                    header.classList.remove('bg-white/80', 'backdrop-blur-md', 'shadow-sm');
+                }
+            });
+
+            // Gemini Modal Logic
+            const modal = document.getElementById('gemini-modal');
+            const openBtn = document.getElementById('open-gemini-modal');
+            const closeBtn = document.getElementById('close-gemini-modal');
+            const generateBtn = document.getElementById('gemini-generate');
+            const resetBtn = document.getElementById('gemini-reset');
+            const form = document.getElementById('gemini-form');
+            const loading = document.getElementById('gemini-loading');
+            const resultDiv = document.getElementById('gemini-result');
+            
+            const openModal = () => {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                modal.querySelector('.modal-content').classList.remove('scale-95');
+            };
+
+            const closeModal = () => {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                modal.querySelector('.modal-content').classList.add('scale-95');
+            };
+            
+            const resetModal = () => {
+                form.style.display = 'block';
+                loading.style.display = 'none';
+                resultDiv.style.display = 'none';
+                resultDiv.innerHTML = '';
+                generateBtn.style.display = 'block';
+                resetBtn.style.display = 'none';
+                document.getElementById('session-goal').value = '';
+            };
+
+            openBtn.addEventListener('click', () => {
+                resetModal();
+                openModal();
+            });
+            closeBtn.addEventListener('click', closeModal);
+            resetBtn.addEventListener('click', resetModal);
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+
+            generateBtn.addEventListener('click', async () => {
+                const age = document.getElementById('age-group').value;
+                const goal = document.getElementById('session-goal').value;
+                const duration = document.getElementById('session-duration').value;
+
+                if (!goal.trim()) {
+                    alert('Please enter a goal for the session.');
+                    return;
+                }
+
+                form.style.display = 'none';
+                loading.style.display = 'flex';
+                
+                const systemPrompt = `You are a compassionate and experienced child development expert from India, specializing in creating engaging activities for NGOs. Your name is 'Kuleana Co-Pilot'. Your task is to generate a detailed, practical, and inspiring session plan for a volunteer mentor.
+
+                GUIDELINES:
+                - Structure the output clearly with headings (e.g., "Icebreaker," "Main Activity," "Cool-down & Reflection").
+                - All activities MUST use simple, low-cost, or no-cost materials commonly available in India (e.g., paper, stones, leaves, old newspapers, basic art supplies).
+                - The tone should be encouraging, positive, and easy for a first-time mentor to understand.
+                - Include talking points or questions for the mentor to ask the child to encourage conversation and reflection.
+                - Ensure the plan is realistic for the specified duration.
+                - Format your response using markdown-style line breaks for readability. Use ### for headings and * for list items.`;
+
+                const userQuery = `Create a mentor session plan for a child in the ${age} age group. The session's main goal is "${goal}". The total duration is ${duration}.`;
+                
+                const apiKey = ""; // API key will be injected by the environment
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+
+                const payload = {
+                    contents: [{ parts: [{ text: userQuery }] }],
+                    systemInstruction: {
+                        parts: [{ text: systemPrompt }]
+                    },
+                };
+                
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    if (!response.ok) {
+                         throw new Error(`API Error: ${response.status}`);
+                    }
+
+                    const result = await response.json();
+                    const candidate = result.candidates?.[0];
+
+                    if (candidate && candidate.content?.parts?.[0]?.text) {
+                        let text = candidate.content.parts[0].text;
+                        // Simple markdown to HTML conversion
+                        text = text.replace(/### (.*)\n/g, '<h3 class="font-serif text-xl font-bold mt-6 mb-3 text-brand-sage">$1</h3>');
+                        text = text.replace(/\* (.*)\n/g, '<li class="ml-5 list-disc">$1</li>');
+                        resultDiv.innerHTML = text;
+
+                    } else {
+                        resultDiv.innerHTML = '<p class="text-red-500">Sorry, I couldn\'t generate a plan right now. Please try again.</p>';
+                    }
+                } catch (error) {
+                    console.error('Gemini API call failed:', error);
+                    resultDiv.innerHTML = '<p class="text-red-500">An error occurred while connecting to the creative co-pilot. Please check your connection and try again.</p>';
+                } finally {
+                    loading.style.display = 'none';
+                    resultDiv.style.display = 'block';
+                    generateBtn.style.display = 'none';
+                    resetBtn.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
